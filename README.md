@@ -1,15 +1,5 @@
 # Twitter-Sentiment
 
-Sentiment analysis of social media
-
-First, deploy an Amazon EC2 instance in an Amazon VPC that ingests tweets from Twitter.
-
-Next, create an Amazon Kinesis Data Firehose delivery stream that loads the streaming tweets into the raw prefix in the solution's S3 bucket.
-
-S3 invokes a Lambda function to analyze the raw tweets using Amazon Translate to translate non-English tweets into English, and Amazon Comprehend to use natural language-processing (NLP) to perform entity extraction and sentiment analysis.
-
-A second Kinesis Data Firehose delivery stream loads the translated tweets and sentiment values into the sentiment prefix in the S3 bucket. A third delivery stream loads entities in the entities prefix in the S3 bucket.
-
-This architecture also deploys a data lake that includes AWS Glue for data transformation, Amazon Athena for data analysis, and Amazon QuickSight for data visualization. AWS Glue Data Catalog contains a logical database used to organize the tables for the data in S3. Athena uses these table definitions to query the data stored in S3 and return the information to an Amazon QuickSight dashboard.
+To gauge public sentiment surrounding food delivery services, real-time tweets are harvested using the Twitter API and processed via Amazon AWS. Initially, an Amazon EC2 instance fetches tweets, which are directed into an S3 bucket via Amazon Kinesis Data Firehose. These raw tweets undergo sentiment analysis and translation through a Lambda function, leveraging Amazon Translate and Amazon Comprehend. The processed data, segmented into sentiment and entities, resides in dedicated prefixes within the S3 bucket. This data infrastructure integrates with AWS Glue for transformations, Amazon Athena for querying, and Amazon QuickSight for visualization, providing a dynamic and insightful dashboard on public sentiment.
 
 ![image](https://github.com/victorhu95/Twitter-Sentiment/assets/44851564/4a248ba2-8af3-471a-92e2-672b45612cd2)
